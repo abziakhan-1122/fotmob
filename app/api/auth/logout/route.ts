@@ -1,0 +1,2 @@
+import {NextResponse} from "next/server";import {destroySession,getCurrentUser} from "@/lib/auth";import {audit} from "@/lib/audit";import {assertSameOrigin} from "@/lib/security";
+export async function POST(request:Request){try{assertSameOrigin(request);const user=await getCurrentUser();await destroySession();if(user)await audit({actorId:user.id,action:"AUTH_LOGOUT",request});return NextResponse.json({ok:true})}catch{return NextResponse.json({ok:true})}}
