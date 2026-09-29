@@ -1,0 +1,2 @@
+import {NextResponse} from "next/server";import {requirePermission} from "@/lib/auth";
+export async function GET(){try{const user=await requirePermission("MANAGE_ASSIGNED_LEAGUES");return NextResponse.json({id:user.id,email:user.email,roles:user.roles,permissions:user.permissions,ambassador:user.ambassador})}catch(e){return NextResponse.json({error:e instanceof Error?e.message:"Forbidden"},{status:403})}}
