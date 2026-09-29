@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Home(){return <section className="hero"><h1>Football data, built for everyone.</h1><p className="muted">Secure authentication foundation for FotMob.</p><p><Link href="/register">Create an account</Link> · <Link href="/login">Sign in</Link></p></section>}
