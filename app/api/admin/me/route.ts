@@ -1,0 +1,2 @@
+import {NextResponse} from "next/server";import {requireRole} from "@/lib/auth";
+export async function GET(){try{const user=await requireRole("SUPER_ADMIN","ADMIN","EDITOR");return NextResponse.json({id:user.id,email:user.email,roles:user.roles,permissions:user.permissions})}catch(e){return NextResponse.json({error:e instanceof Error?e.message:"Forbidden"},{status:403})}}
